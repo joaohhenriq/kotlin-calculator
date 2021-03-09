@@ -8,9 +8,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var op = "+"
-    var oldNumber = ""
-    var isNewOp = true
+    var op: String = "+"
+    var oldNumber: String = ""
+    var isNewOp: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun btnClickEqualEvent(view: View) {
-        val newNumber = editShowNumber.text.toString()
+        val newNumber: String = editShowNumber.text.toString()
         var finalNumber: Double = 0.0
         when(op) {
             "*" -> {
@@ -111,6 +111,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         editShowNumber.setText(finalNumber.toString())
+        isNewOp = true
+    }
+
+    fun btnClickPercentEvent(view: View) {
+        val number: Double = editShowNumber.text.toString().toDouble() / 100
+        editShowNumber.setText(number.toString())
+    }
+
+    fun btnClickClearEvent(view: View) {
+        editShowNumber.setText("0")
         isNewOp = true
     }
 }
